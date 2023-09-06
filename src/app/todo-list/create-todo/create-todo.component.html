@@ -1,0 +1,74 @@
+<h2 mat-dialog-title>TODO NEW<div class="close-icon" mat-dialog-close><img src="../../assets/images/close-icon.png" alt=""></div></h2>
+<mat-dialog-content>
+    <form [formGroup]="createTaskForm">
+        <div class="container my-3 flex flex-wrap items-center">
+            <div class="w-100 md:w-1/2 text-center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Task Name</mat-label>
+                    <input matInput type="text" formControlName="taskName" placeholder="Task Name">
+                </mat-form-field>
+            </div>
+            <div class="w-100 md:w-1/2 text-center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Task Type</mat-label>
+                    <input matInput type="text" formControlName="taskType" placeholder="Task Type">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="container my-3 flex flex-wrap items-center">
+            <div class="w-100 md:w-1/4 text-center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Start Date</mat-label>
+                    <input matInput [matDatepicker]="startDate" formControlName="startDate" placeholder="Start Date">
+                    <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
+                    <mat-datepicker #startDate></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="w-100 md:w-1/4 text-center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Start Time</mat-label>
+                    <input matInput type="time" formControlName="startTime" placeholder="Start Time">
+                </mat-form-field>
+            </div>
+            <div class="w-100 md:w-1/4 text-center">
+                <mat-form-field appearance="outline">
+                    <mat-label>End Date</mat-label>
+                    <input matInput [matDatepicker]="endDate" formControlName="endDate" placeholder="End Date">
+                    <mat-datepicker-toggle matIconSuffix [for]="endDate"></mat-datepicker-toggle>
+                    <mat-datepicker #endDate></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="w-100 md:w-1/4 text-center">
+                <mat-form-field appearance="outline">
+                    <mat-label>End Time</mat-label>
+                    <input matInput type="time" formControlName="endTime" placeholder="End Time">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="container my-3 flex flex-wrap items-center">
+            <div class="w-100 md:w-1/2">
+                <div class="action-buttton-block">
+                    <mat-radio-group  formControlName="taskPriority">
+                        <mat-label class="bold-text">Priority : </mat-label>
+                        <mat-radio-button value="Highest">Highest</mat-radio-button>
+                        <mat-radio-button value="Medium">Medium</mat-radio-button>
+                        <mat-radio-button value="Lowest">Lowest</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+            
+        </div>
+        <div class="container flex flex-wrap items-center my-3">
+            <div class="w-100 md:w-full">
+                <mat-form-field appearance="outline">
+                    <mat-label>Describe your Task</mat-label>
+                    <textarea matInput formControlName="describeTask" rows="4" placeholder="Enter 250 characters..."></textarea>
+                  </mat-form-field>
+            </div>
+        </div> 
+    </form>
+
+    <div class="action-buttton-block text-right">
+        <button (click)="createData()" class="btn" >Create</button>
+    </div>
+</mat-dialog-content>
