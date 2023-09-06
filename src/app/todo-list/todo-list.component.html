@@ -1,77 +1,54 @@
-<button mat-raised-button color="primary" (click)="addNewRow()">ADD</button>
-
-<mat-table [dataSource]="dataSource">
-    <!-- Main Task Row -->
-    <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef> Task Name </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-            {{ element.name }}
-            <button mat-icon-button color="primary" (click)="addSubTask(element)">
-                <mat-icon>add</mat-icon>
-            </button>
-        </mat-cell>
-    </ng-container>
-
-    <!-- Type Assigned -->
-    <ng-container matColumnDef="typeAssigned">
-        <mat-header-cell *matHeaderCellDef> Type Assigned </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{ element.typeAssigned }} </mat-cell>
-    </ng-container>
-
-    <!-- Team -->
-    <ng-container matColumnDef="team">
-        <mat-header-cell *matHeaderCellDef> Team </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{ element.team }} </mat-cell>
-    </ng-container>
-
-    <!-- Start Date -->
-    <ng-container matColumnDef="start">
-        <mat-header-cell *matHeaderCellDef> Start Date </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{ element.start }} </mat-cell>
-    </ng-container>
-
-    <!-- End Date -->
-    <ng-container matColumnDef="end">
-        <mat-header-cell *matHeaderCellDef> End Date </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{ element.end }} </mat-cell>
-    </ng-container>
-
-    <!-- Progress -->
-    <ng-container matColumnDef="progress">
-        <mat-header-cell *matHeaderCellDef> Progress (%) </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{ element.progress }}% </mat-cell>
-    </ng-container>
-
-    <ng-container>
-        <mat-cell *matCellDef="let element">
-            <table>
-                <thead>
+<table>
+    <thead>
+        <tr>
+            <th>Task Name</th>
+            <th>Type Assigned</th>
+            <th>Team</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Progress (%)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let task of dataSource">
+            <tr>
+                <td>{{ task.name }}
+                    <button (click)="addSubTask(task)" mat-icon-button color="primary">
+                        <mat-icon>drag_indicator</mat-icon>
+                    </button>
+                </td>
+                <td>{{ task.typeAssigned }}</td>
+                <td>{{ task.team }}</td>
+                <td>{{ task.start }}</td>
+                <td>{{ task.end }}</td>
+                <td>{{ task.progress }}%</td>
+            </tr>
+            <ng-container *ngFor="let subtask of task.subtasks">
+                <tr>
+                    <td>{{ subtask.name }} 
+                    <button (click)="addSecondSubTask(subtask)" mat-icon-button color="primary">
+                        <mat-icon>drag_indicator</mat-icon>
+                    </button></td>
+                    <td>{{ subtask.typeAssigned }}</td>
+                    <td>{{ subtask.team }}</td>
+                    <td>{{ subtask.start }}</td>
+                    <td>{{ subtask.end }}</td>
+                    <td>{{ subtask.progress }}%</td>
+                </tr>
+                <ng-container *ngFor="let subtasksub of subtask.subtasksSub">
                     <tr>
-                        <th>Subtask Name</th>
-                        <th>Subtask Type Assigned</th>
-                        <th>Subtask Team</th>
-                        <th>Subtask Start Date</th>
-                        <th>Subtask End Date</th>
-                        <th>Subtask Progress (%)</th>
+                        <td>{{ subtasksub.name }}</td>
+                        <td>{{ subtasksub.typeAssigned }}</td>
+                        <td>{{ subtasksub.team }}</td>
+                        <td>{{ subtasksub.start }}</td>
+                        <td>{{ subtasksub.end }}</td>
+                        <td>{{ subtasksub.progress }}%</td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let subtask of element.subtasks">
-                        <td>{{ subtask.name }}</td>
-                        <td>{{ subtask.typeAssigned }}</td>
-                        <td>{{ subtask.team }}</td>
-                        <td>{{ subtask.start }}</td>
-                        <td>{{ subtask.end }}</td>
-                        <td>{{ subtask.progress }}%</td>
-                    </tr>
-                </tbody>
-            </table>
-            <mat-header-row *matHeaderRowDef="displayedSubColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedSubColumns;"></mat-row>
-        </mat-cell>
-    </ng-container>
+    
+                </ng-container>
 
-    <!-- Define your data source -->
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+            </ng-container>
+            
+        </ng-container>
+    </tbody>
+</table>

@@ -32,7 +32,13 @@ export class TodoListComponent {
       end: '2023-09-20',
       progress: 30,
       subtasks: [
-        { name: 'Subtask 1', typeAssigned: 'Sub Type A', team: 'Sub Team 1', start: '2023-09-10', end: '2023-09-20', progress: 30 },
+        {
+          name: 'Subtask 1', typeAssigned: 'Sub Type A', team: 'Sub Team 1', start: '2023-09-10', end: '2023-09-20', progress: 30,
+          subtasksSub: [
+            { name: 'Subtask Sub 1', typeAssigned: 'Sub Type A', team: 'Sub Team 1', start: '2023-09-10', end: '2023-09-20', progress: 30 },
+            { name: 'Subtask Sub 2', typeAssigned: 'Sub Type B', team: 'Sub Team 2', start: '2023-09-10', end: '2023-09-20', progress: 30 },
+          ]
+        },
         { name: 'Subtask 2', typeAssigned: 'Sub Type B', team: 'Sub Team 2', start: '2023-09-10', end: '2023-09-20', progress: 30 },
       ]
     },
@@ -55,5 +61,29 @@ export class TodoListComponent {
     this.dataSource.push(newRow);
   }
 
-  addSubTask(element:any) {}
+  addSubTask(task: any) {
+    const newSubTask = {
+      name: 'New Subtask',
+      typeAssigned: 'Type X',
+      team: 'Team Y',
+      start: '2023-09-30',
+      end: '2023-10-10',
+      progress: 0,
+    };
+
+    task.subtasks.push(newSubTask);
+  }
+
+  addSecondSubTask(subtask: any) {
+    const newSubTask = {
+      name: 'New Subtask',
+      typeAssigned: 'Type X',
+      team: 'Team Y',
+      start: '2023-09-30',
+      end: '2023-10-10',
+      progress: 0,
+    };
+
+    subtask.subtasksSub.push(newSubTask);
+  }
 }
