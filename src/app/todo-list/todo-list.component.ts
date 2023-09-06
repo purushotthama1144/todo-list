@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+
+
 
 @Component({
   selector: 'app-todo-list',
@@ -6,5 +9,51 @@ import { Component } from '@angular/core';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent {
-// https://stackblitz.com/edit/angular-nested-mat-table-nwuwiq?file=app%2Ftable-expandable-rows-example.html,app%2Ftable-expandable-rows-example.ts,app%2Ftable-expandable-rows-example.css
+  displayedColumns: string[] = ['name', 'typeAssigned', 'team', 'start', 'end', 'progress'];
+  displayedSubColumns: string[] = ['name', 'typeAssigned', 'team', 'start', 'end', 'progress'];
+  dataSource = [
+    {
+      name: 'Task 1',
+      typeAssigned: 'Type A',
+      team: 'Team 1',
+      start: '2023-09-10',
+      end: '2023-09-20',
+      progress: 30,
+      subtasks: [
+        { name: 'Subtask 1', typeAssigned: 'Sub Type A', team: 'Sub Team 1', start: '2023-09-10', end: '2023-09-20', progress: 30 },
+        { name: 'Subtask 2', typeAssigned: 'Sub Type B', team: 'Sub Team 2', start: '2023-09-10', end: '2023-09-20', progress: 30 },
+      ]
+    },
+    {
+      name: 'Task 1',
+      typeAssigned: 'Type A',
+      team: 'Team 1',
+      start: '2023-09-10',
+      end: '2023-09-20',
+      progress: 30,
+      subtasks: [
+        { name: 'Subtask 1', typeAssigned: 'Sub Type A', team: 'Sub Team 1', start: '2023-09-10', end: '2023-09-20', progress: 30 },
+        { name: 'Subtask 2', typeAssigned: 'Sub Type B', team: 'Sub Team 2', start: '2023-09-10', end: '2023-09-20', progress: 30 },
+      ]
+    },
+  ];
+
+  subtasks = this.dataSource.map(task => task.subtasks).flat();
+
+  addNewRow() {
+    console.log(this.subtasks)
+    const newRow = {
+      name: 'New Task',
+      typeAssigned: 'Type X',
+      team: 'Team Y',
+      start: '2023-09-30',
+      end: '2023-10-10',
+      progress: 0,
+      subtasks: [],
+    };
+
+    this.dataSource.push(newRow);
+  }
+
+  addSubTask(element:any) {}
 }
