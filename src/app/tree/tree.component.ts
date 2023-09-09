@@ -54,7 +54,7 @@ const TREE_DATA: FoodNode[] = [
   {
     "id": 1,
     "tag": "Task 1",
-    "progress": 10,
+    "progress": 30,
     "assigned_by": "Task BETA",
     "priority": "Highest",
     "team": "ALpha",
@@ -74,7 +74,7 @@ const TREE_DATA: FoodNode[] = [
       {
         "id": 2,
         "tag": "Sub Task 1",
-        "progress": 10,
+        "progress": 50,
         "priority": "Lowest",
         "assigned_by": "Sub Task BETA",
         "team": "ALpha",
@@ -94,7 +94,7 @@ const TREE_DATA: FoodNode[] = [
           {
             "id": 3,
             "tag": "Inner Sub Task 1",
-            "progress": 10,
+            "progress": 60,
             "priority": "Medium",
             "assigned_by": "Inner Sub Task BETA",
             "team": "ALpha",
@@ -109,7 +109,49 @@ const TREE_DATA: FoodNode[] = [
             "parent_has_child": true,
             "added_to_topics_indicator": 1,
             "have_parent": true,
-            "parent_node_details": ""
+            "parent_node_details": "",
+            "children": [
+              {
+                "id": 5,
+                "tag": "Sub Inner Sub Task 1",
+                "progress": 20,
+                "priority": "Highest",
+                "assigned_by": "Inner Sub Task BETA",
+                "team": "ALpha",
+                "start": "10 AM",
+                "end": "10 PM",
+                "parent_id": 2,
+                "tenant_id": 1,
+                "context_id": 1,
+                "tag_type": 1,
+                "tag_status": 1,
+                "description": "SUB DESCRIPTION 1",
+                "parent_has_child": true,
+                "added_to_topics_indicator": 1,
+                "have_parent": true,
+                "parent_node_details": ""
+              },
+              {
+                "id": 7,
+                "tag": "Sub Inner Sub Task 2",
+                "progress": 80,
+                "priority": "Medium",
+                "assigned_by": "Inner Sub Task BETA",
+                "team": "ALpha",
+                "start": "10 AM",
+                "end": "10 PM",
+                "parent_id": 2,
+                "tenant_id": 1,
+                "context_id": 1,
+                "tag_type": 1,
+                "tag_status": 1,
+                "description": "SUB DESCRIPTION 2",
+                "parent_has_child": true,
+                "added_to_topics_indicator": 1,
+                "have_parent": true,
+                "parent_node_details": ""
+              }
+            ]
           }
         ]
       }
@@ -118,7 +160,7 @@ const TREE_DATA: FoodNode[] = [
   {
     "id": 4,
     "tag": "Task 2",
-    "progress": 10,
+    "progress": 90,
     "assigned_by": "Task BETA",
     "priority": "Highest",
     "team": "ALpha",
