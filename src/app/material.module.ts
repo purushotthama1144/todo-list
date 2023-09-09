@@ -56,7 +56,7 @@ const mm = [
   MatToolbarModule,
   MatTooltipModule,
   MatNativeDateModule,
-  MatTreeModule
+
 ]
 
 @NgModule({

@@ -8,12 +8,16 @@ import { MaterialModule } from './material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateTodoComponent } from './todo-list/create-todo/create-todo.component';
+import { MatTreeModule } from '@angular/material/tree';
+import { CdkTreeModule } from '@angular/cdk/tree';
+import { TreeComponent } from './tree/tree.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
-    CreateTodoComponent
+    CreateTodoComponent,
+    TreeComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,6 +26,8 @@ import { CreateTodoComponent } from './todo-list/create-todo/create-todo.compone
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatTreeModule,
+    CdkTreeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
