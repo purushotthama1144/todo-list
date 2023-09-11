@@ -1,5 +1,5 @@
 <div class="plus-icon" (click)="addMainTask()">
-    <img src="../../assets/images/close-icon.png" alt="">
+    <img src="../../assets/images/close-icon.png" alt="" width="30" height="30">
 </div>
 <div class="outer-wrap">
     <div class="table-header d-flex">
@@ -20,7 +20,10 @@
                 <div class="col-2">
                     <button mat-icon-button disabled></button>
                 </div>
-                <div class="col-2 position-relative name">{{node.tag}}
+                <div class="col-2 name">
+                    <div class="name-inner">
+                        {{node.tag}}
+                    </div>
                     <div (click)="toggleSubClasses(node.id)" class="trigger">
                         <span></span>
                         <span></span>
@@ -66,7 +69,10 @@
                             </mat-icon>
                         </button>
                     </div>
-                    <div class="col-2 position-relative name">{{node.tag}}
+                    <div class="col-2 name">
+                        <div class="name-inner">
+                            {{node.tag}}
+                        </div>
                         <div (click)="toggleSubClasses(node.id)" class="trigger">
                             <span></span>
                             <span></span>

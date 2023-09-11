@@ -26,7 +26,7 @@ interface ItemNode {
   tag_mapped_with_map_table_count: number;
 }
 
-interface FoodNode {
+interface taskNode {
   progress: any,
   start: any,
   end: any,
@@ -46,11 +46,11 @@ interface FoodNode {
   parent_node_details: any,
   selected?: boolean;
   id?: number;
-  parent?: FoodNode
-  children?: FoodNode[];
+  parent?: taskNode
+  children?: taskNode[];
 }
 
-const TREE_DATA: FoodNode[] = [
+const TREE_DATA: taskNode[] = [
   {
     "id": 1,
     "tag": "Task 1",
@@ -196,8 +196,8 @@ export class TreeComponent {
     }
   }
 
-  treeControl = new NestedTreeControl<FoodNode>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<FoodNode>();
+  treeControl = new NestedTreeControl<taskNode>(node => node.children);
+  dataSource = new MatTreeNestedDataSource<taskNode>();
 
   constructor(public dialog: MatDialog) {
     this.dataSource.data = TREE_DATA;
@@ -206,7 +206,7 @@ export class TreeComponent {
     });
   }
 
-  hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
+  hasChild = (_: number, node: taskNode) => !!node.children && node.children.length > 0;
 
   checkAllParents(node: any) {
     if (node.parent) {
