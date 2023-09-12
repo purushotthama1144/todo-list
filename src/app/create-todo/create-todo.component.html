@@ -50,9 +50,9 @@
                 <div class="action-buttton-block">
                     <mat-radio-group  formControlName="taskPriority">
                         <mat-label class="bold-text">Priority : </mat-label>
-                        <mat-radio-button value="Highest">Highest</mat-radio-button>
-                        <mat-radio-button value="Medium">Medium</mat-radio-button>
-                        <mat-radio-button value="Lowest">Lowest</mat-radio-button>
+                        <mat-radio-button value="3">Highest</mat-radio-button>
+                        <mat-radio-button value="2">Medium</mat-radio-button>
+                        <mat-radio-button value="1">Lowest</mat-radio-button>
                     </mat-radio-group>
                 </div>
             </div>
@@ -63,12 +63,12 @@
                 <mat-form-field appearance="outline">
                     <mat-label>Describe your Task</mat-label>
                     <textarea matInput formControlName="describeTask" rows="4" placeholder="Enter 250 characters..."></textarea>
-                  </mat-form-field>
+                </mat-form-field>
             </div>
         </div> 
     </form>
 
     <div class="action-buttton-block text-right">
-        <button (click)="createData()" class="btn" >Create</button>
+        <button (click)="createData()" class="btn" [disabled]="createTaskForm.invalid">Create</button>
     </div>
 </mat-dialog-content>
