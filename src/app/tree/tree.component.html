@@ -18,7 +18,7 @@
         <mat-tree-node class="table-content" *matTreeNodeDef="let node" matTreeNodeToggle>
             <div class="d-flex w-100">
                 <div class="col-2">
-                    <button mat-icon-button disabled></button>
+                    <button *ngIf="node.parent_has_child" mat-icon-button disabled></button>
                 </div>
                 <div class="col-2 name">
                     <div class="name-inner">
@@ -63,7 +63,7 @@
             <div class="nested-tree">
                 <div class="mat-tree-node d-flex">
                     <div class="col-2">
-                        <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
+                        <button *ngIf="node.parent_has_child" mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
                             <mat-icon class="mat-icon-rtl-mirror">
                                 {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
                             </mat-icon>

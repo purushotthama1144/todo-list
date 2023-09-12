@@ -3,7 +3,7 @@ import { FlatTreeControl, NestedTreeControl } from '@angular/cdk/tree';
 import { Component, Injectable } from '@angular/core';
 import { MatTreeFlattener, MatTreeFlatDataSource, MatTreeNestedDataSource } from '@angular/material/tree';
 import { BehaviorSubject, Observable, map, merge } from 'rxjs';
-import { CreateTodoComponent } from '../todo-list/create-todo/create-todo.component';
+import { CreateTodoComponent } from '../create-todo/create-todo.component';
 import { MatDialog } from '@angular/material/dialog';
 
 interface ItemNode {
@@ -126,7 +126,7 @@ const TREE_DATA: taskNode[] = [
                 "tag_type": 1,
                 "tag_status": 1,
                 "description": "SUB DESCRIPTION 1",
-                "parent_has_child": true,
+                "parent_has_child": false,
                 "added_to_topics_indicator": 1,
                 "have_parent": true,
                 "parent_node_details": ""
@@ -146,7 +146,27 @@ const TREE_DATA: taskNode[] = [
                 "tag_type": 1,
                 "tag_status": 1,
                 "description": "SUB DESCRIPTION 2",
-                "parent_has_child": true,
+                "parent_has_child": false,
+                "added_to_topics_indicator": 1,
+                "have_parent": true,
+                "parent_node_details": ""
+              },
+              {
+                "id": 8,
+                "tag": "Sub Inner Sub Task 3",
+                "progress": 80,
+                "priority": "Medium",
+                "assigned_by": "Inner Sub Task BETA",
+                "team": "ALpha",
+                "start": "10 AM",
+                "end": "10 PM",
+                "parent_id": 2,
+                "tenant_id": 1,
+                "context_id": 1,
+                "tag_type": 1,
+                "tag_status": 1,
+                "description": "SUB DESCRIPTION 3",
+                "parent_has_child": false,
                 "added_to_topics_indicator": 1,
                 "have_parent": true,
                 "parent_node_details": ""
@@ -172,7 +192,7 @@ const TREE_DATA: taskNode[] = [
     "tag_type": 3,
     "tag_status": 3,
     "description": "PARENT DESCRIPTION 2",
-    "parent_has_child": true,
+    "parent_has_child": false,
     "added_to_topics_indicator": 3,
     "have_parent": true,
     "parent_node_details": ""

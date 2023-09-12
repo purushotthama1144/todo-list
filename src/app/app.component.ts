@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogPosition, MatDialog } from '@angular/material/dialog';
-import { CreateTodoComponent } from './todo-list/create-todo/create-todo.component';
+import { CreateTodoComponent } from './create-todo/create-todo.component';
 
 @Component({
   selector: 'app-root',
