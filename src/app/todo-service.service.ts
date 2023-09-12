@@ -10,14 +10,22 @@ export class TodoServiceService {
   constructor(private httpClient: HttpClient) { }
 
   createListAPI(data:any) {
-    return this.httpClient.post(`${this.baseUrl}micro-branch/list/` , data)
+    return this.httpClient.post(`${this.baseUrl}micro-task/create/` , data)
   }
 
-  getListAPI(data:any) {
-    return this.httpClient.post(`${this.baseUrl}micro-branch/list/` , data)
+  getParentListAPI(data:any) {
+    return this.httpClient.post(`${this.baseUrl}micro-task/get-parent-task-list/` , data)
+  }
+
+  getChildListAPI(data:any) {
+    return this.httpClient.post(`${this.baseUrl}micro-task/get-sub-task-list/` , data)
   }
 
   getsubTaskAPI(data:any) {
     return this.httpClient.post(`${this.baseUrl}micro-branch/list/` , data)
+  }
+  
+  getTaskTypeAPI(data:any) {
+    return this.httpClient.post(`${this.baseUrl}micro-task/task-type/list/` , data)
   }
 }

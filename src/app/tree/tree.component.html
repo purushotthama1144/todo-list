@@ -13,92 +13,56 @@
         <div class="col-2">End</div>
         <div class="col-2">Progress</div>
     </div>
-    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
-    
-        <mat-tree-node class="table-content" *matTreeNodeDef="let node" matTreeNodeToggle>
-            <div class="d-flex w-100">
-                <div class="col-2">
-                    <button *ngIf="node.parent_has_child" mat-icon-button disabled></button>
-                </div>
-                <div class="col-2 name">
-                    <div class="name-inner">
-                        {{node.tag}}
-                    </div>
-                    <div (click)="toggleSubClasses(node.id)" class="trigger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <div class="sub-classes" *ngIf="openSectionIds[node.id]">
-                        <div class="add block" (click)="addSubTask(node)">Add Sub Task</div>
-                        <div class="add block">Delete</div>
-                        <div class="add block">Assign</div>
-                    </div>
-                </div>
-    
-                <div class="col-2">{{node.tag_type}}</div>
-                <div class="col-2">{{node.assigned_by}}</div>
-                <div class="col-2">
-                    <span class="priority" [ngClass]="{'red': node.priority === 'Highest', 'green' : node.priority === 'Lowest' , 'yellow': node.priority == 'Medium' }">
-                    {{node.priority}}</span>
-                </div>
-                <div class="col-2">{{node.team}}</div>
-                <div class="col-2">{{node.start}}</div>
-                <div class="col-2">{{node.end}}</div>
-                <div class="col-2"><mat-progress-bar mode="determinate" [value]="node.progress"></mat-progress-bar></div>
-            </div>
+
+    <mat-tree class="w-100" [dataSource]="dataSource" [treeControl]="treeControl">
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+            <button mat-icon-button disabled></button>
         </mat-tree-node>
-        <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-            <!-- <div class="table-header d-flex">
-                <div class="col-2"></div>
-                <div class="col-2">Task Name</div>
-                <div class="col-2">Type</div>
-                <div class="col-2">Assigned By</div>
-                <div class="col-2">Priority</div>
-                <div class="col-2">Team</div>
-                <div class="col-2">Start</div>
-                <div class="col-2">End</div>
-                <div class="col-2">Progress</div>
-            </div> -->
-            <div class="nested-tree">
-                <div class="mat-tree-node d-flex">
-                    <div class="col-2">
-                        <button *ngIf="node.parent_has_child" mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
-                            <mat-icon class="mat-icon-rtl-mirror">
-                                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                            </mat-icon>
-                        </button>
-                    </div>
-                    <div class="col-2 name">
-                        <div class="name-inner">
-                            {{node.tag}}
-                        </div>
-                        <div (click)="toggleSubClasses(node.id)" class="trigger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <div class="sub-classes" *ngIf="openSectionIds[node.id]">
-                            <div class="add block" (click)="addSubTask(node)">Add Sub Task</div>
-                            <div class="add block">Delete</div>
-                            <div class="add block">Assign</div>
-                        </div>
-                    </div>
-                    <div class="col-2">{{node.tag_type}}</div>
-                    <div class="col-2">{{node.assigned_by}}</div>
-                    <div class="col-2">
-                        <span class="priority" [ngClass]="{'red': node.priority === 'Highest', 'green' : node.priority === 'Lowest' , 'yellow': node.priority == 'Medium' }">
-                        {{node.priority}}</span>
-                    </div>
-                    <div class="col-2">{{node.team}}</div>
-                    <div class="col-2">{{node.start}}</div>
-                    <div class="col-2">{{node.end}}</div>
-                    <div class="col-2"><mat-progress-bar mode="determinate" [value]="node.progress"></mat-progress-bar></div>
+        <div class="w-100">
+            <mat-tree-node class="w-100" *matTreeNodeDef="let node; when: hasChild" >
+                <div class="content w-100">
+                    <table border="0" width="100%">
+                        <tr class="d-flex">
+                            <td>
+                                <button *ngIf="node.item.parent_has_child" mat-icon-button
+                                    [attr.aria-label]="'Toggle ' + node.item" matTreeNodeToggle>
+                                    <mat-icon class="mat-icon-rtl-mirror margin-bottom-2px">
+                                        {{
+                                        treeControl.isExpanded(node) ? "expand_more" : "chevron_right"
+                                        }}
+                                    </mat-icon>
+                                </button>
+                                
+                            </td>
+                            <td  class="col-2 name"> {{ node.item.task_note }} 
+                                <button class="fixed-right-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu" [overlapTrigger]="false" class="search-menunw">
+                                    <button mat-menu-item (click)="addSubTask(node.item)">
+                                        <span>Add Child</span>
+                                    </button>
+
+                                    <button mat-menu-item>
+                                        <span>Edit</span>
+                                    </button>
+
+                                    <button mat-menu-item>
+                                        Delete
+                                    </button>
+                                </mat-menu>
+                            </td>
+                            <td> {{ node.item.task_type_name }}</td>
+                            <td> {{ node.item.created_by_user.creator_name }}</td>
+                            <td> <span class="priority" [ngClass]="{'red': node.item.priority === 'Highest', 'green' : node.item.priority === 'Lowest' , 'yellow': node.item.priority == 'Medium' }">{{ node.item.priority }}</span></td>
+                            <td> {{ node.item.branch_name }}</td>
+                            <td> {{ node.item.start_date | date :'short' }}</td>
+                            <td> {{ node.item.due_date | date :'short' }}</td>
+                            <td> <mat-progress-bar mode="determinate" [value]="node.item.task_status"></mat-progress-bar> </td>
+                        </tr>
+                    </table>
                 </div>
-                <div class="inner-table" [class.example-tree-invisible]="!treeControl.isExpanded(node)">
-                    <ng-container matTreeNodeOutlet></ng-container>
-                </div>
-            </div>
-        </mat-nested-tree-node>
+            </mat-tree-node>
+        </div>
     </mat-tree>
 </div>

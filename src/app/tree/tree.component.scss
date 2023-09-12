@@ -12,7 +12,7 @@ li {
     align-items: center;
 }
 
-.col-2 {
+.col-2 , td{
     width: 12%;
     height: 60px;
     display: flex;
@@ -53,65 +53,11 @@ li {
 .col-2.name {
     text-align: left;
     justify-content: flex-start;
+    padding-left: 10px;
    
 }
-.name-inner {
-    padding-left: 10px;
-}
-// .inner-table {
-//     margin-left: 1%;
-// }
-
 .position-relative {
     position: relative;
-}
-
-.trigger {
-    cursor: pointer;
-    position: absolute;
-    right: 10px;
-    z-index: 1;
-
-    span {
-        display: block;
-        width: 4px;
-        height: 4px;
-        margin: 2px;
-        background-color: #000;
-        opacity: 1;
-        transition: all .3s;
-        transform-origin: center;
-    }
-}
-
-.sub-classes {
-    z-index: 2;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-    position: absolute;
-    right: -30px;
-    text-align: center;
-    background: #fff;
-    padding: 0 4px;
-    bottom: -75px;
-}
-
-.table-content {
-    width: 100%;
-    display: block;
-}
-
-.inner-table .table-content {
-    .table-header {
-        display: none;
-    }
-
-    &:first-child {
-        .table-header {
-            display: flex;
-        }
-    }
 }
 
 .mdc-linear-progress {
@@ -155,12 +101,11 @@ span.priority {
     padding-top: 80px;
 }
 
-.add {
-    padding: 5px;
-    cursor: pointer;
-    border-bottom: 1px solid #000;
+.fixed-right-button {
+    position: absolute;
+    right: 0;
+}
 
-    &:last-child {
-        border-bottom: 0;
-    }
+.w-100 {
+    width: 100%;
 }
