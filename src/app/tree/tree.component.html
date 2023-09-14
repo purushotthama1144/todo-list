@@ -43,18 +43,21 @@
                                         <span>Add Child</span>
                                     </button>
 
-                                    <button mat-menu-item>
+                                    <button mat-menu-item (click)="editTask(node.item)">
                                         <span>Edit</span>
                                     </button>
 
-                                    <button mat-menu-item>
+                                    <button mat-menu-item (click)="deleteTask(node.item)">
                                         Delete
                                     </button>
                                 </mat-menu>
                             </td>
                             <td> {{ node.item.task_type_name }}</td>
                             <td> {{ node.item.created_by_user.creator_name }}</td>
-                            <td> <span class="priority" [ngClass]="{'red': node.item.priority === 'Highest', 'green' : node.item.priority === 'Lowest' , 'yellow': node.item.priority == 'Medium' }">{{ node.item.priority }}</span></td>
+                            <td> <span class="priority" 
+                                [ngClass]="{'red': node.item.priority === 'Highest' || node.item.priority === 3, 'green' : node.item.priority === 'Lowest' || node.item.priority === 2 , 'yellow': node.item.priority == 'Medium' || node.item.priority === 2 }">
+                                {{ node.item.priority }}</span>
+                            </td>
                             <td> {{ node.item.branch_name }}</td>
                             <td> {{ node.item.start_date | date :'short' }}</td>
                             <td> {{ node.item.due_date | date :'short' }}</td>

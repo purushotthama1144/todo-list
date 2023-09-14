@@ -10,12 +10,15 @@ import { CreateTodoComponent } from './create-todo/create-todo.component';
 import { MatTreeModule } from '@angular/material/tree';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { TreeComponent } from './tree/tree.component';
+import { EditTodoComponent } from './edit-todo/edit-todo.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateTodoComponent,
     TreeComponent,
+    EditTodoComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +29,7 @@ import { TreeComponent } from './tree/tree.component';
     HttpClientModule,
     MatTreeModule,
     CdkTreeModule,
+    NgxMaterialTimepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

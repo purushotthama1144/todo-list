@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>TODO NEW<div class="close-icon" mat-dialog-close><img width="30" height="30" src="../../assets/images/close-icon.png" alt=""></div></h2>
 <mat-dialog-content>
-    <form [formGroup]="createTaskForm">
+    <form [formGroup]="updateTaskForm">
         <div class="container my-3 flex flex-wrap items-center">
             <div class="w-100 md:w-1/2 text-center">
                 <mat-form-field appearance="outline">
@@ -15,10 +15,6 @@
                         <mat-option *ngFor="let taskType of taskTypes" [value]="taskType.id">{{ taskType.task_type_name }}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <!-- <mat-form-field appearance="outline">
-                    <mat-label>Task Type</mat-label>
-                    <input matInput type="text" formControlName="taskType" placeholder="Task Type">
-                </mat-form-field> -->
             </div>
         </div>
         <div class="container my-3 flex flex-wrap items-center">
@@ -72,9 +68,7 @@
                 <div class="action-buttton-block">
                     <mat-radio-group  formControlName="taskPriority">
                         <mat-label class="bold-text">Priority : </mat-label>
-                        <mat-radio-button value="3">Highest</mat-radio-button>
-                        <mat-radio-button value="2">Medium</mat-radio-button>
-                        <mat-radio-button value="1">Lowest</mat-radio-button>
+                        <mat-radio-button *ngFor="let op of list" [checked]="op.checked" [value]="op.id" >{{ op.name}}</mat-radio-button>
                     </mat-radio-group>
                 </div>
             </div>
@@ -91,6 +85,6 @@
     </form>
 
     <div class="action-buttton-block text-right">
-        <button (click)="createData()" class="btn" [disabled]="createTaskForm.invalid">Create</button>
+        <button (click)="updateTsak()" class="btn" [disabled]="updateTaskForm.invalid">Update</button>
     </div>
 </mat-dialog-content>

@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable, Subscription, map, merge } from 'rxjs';
 import { CreateTodoComponent } from '../create-todo/create-todo.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TodoServiceService } from '../todo-service.service';
+import { EditTodoComponent } from '../edit-todo/edit-todo.component';
 
 interface taskNode {
   id?: number;
@@ -153,6 +154,11 @@ export class TreeComponent  implements OnInit {
   isExpandable = (node: DynamicFlatNode) => node.expandable;
   hasChild = (_: number, _nodeData: DynamicFlatNode) => _nodeData.expandable;
 
+  list = [
+    {"name": "Highest", id: "1"},
+    {"name": "Medium", id: "2"},
+    {"name": "Lowest", id: "3"}
+  ]
 
   constructor(public dialog: MatDialog , private database: TodoServiceService) {}
 
@@ -203,4 +209,25 @@ export class TreeComponent  implements OnInit {
     });
   }
 
+  editTask(node:any) {
+    this.dialog.open(EditTodoComponent, {
+      disableClose: true,
+      width: '70%',
+      autoFocus: false, 
+      restoreFocus: false,
+      data:node
+    });
+  }
+
+  deleteTask(node:any) {
+    const payload = {
+      task_id: node.id
+    }
+    this.database.deleteListAPI(payload).subscribe((response) => {
+      console.log(response)
+      if(response) {
+        this.getTopicParentDetails();
+      }
+    })
+  }
 }

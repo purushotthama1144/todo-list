@@ -28,4 +28,12 @@ export class TodoServiceService {
   getTaskTypeAPI(data:any) {
     return this.httpClient.post(`${this.baseUrl}micro-task/task-type/list/` , data)
   }
+
+  updateListAPI(data:any) {
+    return this.httpClient.put(`${this.baseUrl}micro-task/update/` , data)
+  }
+
+  deleteListAPI(data:any) {
+    return this.httpClient.post(`${this.baseUrl}micro-task/delete/` , data)
+  }
 }

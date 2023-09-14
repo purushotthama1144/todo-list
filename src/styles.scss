@@ -1,5 +1,3 @@
-
-
 .chart-group .apexcharts-legend {
   display: none !important;
 }
@@ -75,5 +73,57 @@ body {
 .col {
   width: 33.33%;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.doctor-appointment-block {
+  .highlight-date .mat-calendar-body-cell-content {
+    color: #ffc107 !important;
+  }
+  
+  .mat-calendar-body-cell {
+    color: green !important;
+    font-size: 10px !important;
+  }
+  
+  .mat-datepicker-content .mat-calendar {
+    background-color: #ccc;
+  }
+  
+  .mat-calendar-body-cell .mat-calendar-body-cell-content {
+    border: 1px solid green !important;
+    background-color: green;
+    color: #fff !important;
+  }
+  
+  .mat-calendar-body-cell.mat-calendar-body-disabled {
+    color: inherit !important;
+    border: none !important;
+  }
+  
+  .mat-calendar-body-cell.mat-calendar-body-active .mat-calendar-body-cell-content{
+    color: #fff !important;
+    background-color: #3f51b5 !important;
+    border: 1px solid #3f51b5 !important;
+  }
+  
+  .mat-calendar-body-cell.mat-calendar-body-disabled .mat-calendar-body-cell-content {
+    border: none !important;
+    background-color: transparent !important;
+    color: #000 !important;
+  }
+  
+  .mat-mdc-snack-bar-container .mdc-snackbar__surface {
+    background-color: #3f51b5 !important;
+  }
+  
+  .mat-mdc-snack-bar-label {
+    color: #fff !important;
+  }
+  
+  .mdc-notched-outline__notch {
+    border-right: none;
+  }
+  
+  .col {
+    width: 33.33%;
+  }
+}
